@@ -9,6 +9,10 @@ nnoremap ,h = ByEi[Ea]()hp
 
 " BASIC SETUP:
 
+" Map escape
+:imap jk <Esc>
+:imap kj <Esc>
+
 " enter the curent millenium
 set nocompatible
 
