@@ -57,15 +57,17 @@ autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 autocmd FileType JavaScript setlocal shiftwidth=2 tabstop=2 
 
-" Specify a directory for plugins
-" - For Neovim: ~/.local/share/nvim/plugged
-" - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.vim/plugged')
+if !empty(glob("~/.vim/plugged"))
+  " Specify a directory for plugins
+  " - For Neovim: ~/.local/share/nvim/plugged
+  " - Avoid using standard Vim directory names like 'plugin'
+  call plug#begin('~/.vim/plugged')
 
-" Make sure you use single quotes
+  " Make sure you use single quotes
 
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-Plug 'pangloss/vim-javascript'
+  " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+  Plug 'pangloss/vim-javascript'
 
-" Initialize plugin system
-call plug#end()
+  " Initialize plugin system
+  call plug#end()
+endif
