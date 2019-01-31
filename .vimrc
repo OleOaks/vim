@@ -1,5 +1,5 @@
 set number
-colorscheme desert
+colorscheme elflord
 syntax enable
 
 "Create Markdown Hyperlink from URL
