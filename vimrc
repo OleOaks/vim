@@ -1,6 +1,7 @@
 set number
 colorscheme elflord
 syntax enable
+set belloff=all
 
 "Create Markdown Hyperlink from URL
 let @h = 'ByEi[Ea]()hp'
