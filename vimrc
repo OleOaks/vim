@@ -57,7 +57,7 @@ autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 autocmd FileType JavaScript setlocal shiftwidth=2 tabstop=2 
 
-if !empty(glob("~/.vim/plugged"))
+if !empty(glob("~/.vim/autoload/plug.vim"))
   " Specify a directory for plugins
   " - For Neovim: ~/.local/share/nvim/plugged
   " - Avoid using standard Vim directory names like 'plugin'
