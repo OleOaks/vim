@@ -72,4 +72,6 @@ if !empty(glob("~/.vim/autoload/plug.vim"))
 
   " Initialize plugin system
   call plug#end()
+  
+  let g:airline_powerline_fonts = 1
 endif
