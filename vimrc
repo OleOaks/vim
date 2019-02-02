@@ -68,6 +68,7 @@ if !empty(glob("~/.vim/autoload/plug.vim"))
 
   " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
   Plug 'pangloss/vim-javascript'
+  Plug 'vim-airline/vim-airline'
 
   " Initialize plugin system
   call plug#end()
