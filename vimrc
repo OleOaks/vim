@@ -9,6 +9,7 @@ let @h = 'ByEi[Ea]()hp'
 nnoremap ,h = ByEi[Ea]()hp
 
 " BASIC SETUP:
+map <SPACE> <leader>
 
 " Map escape
 :imap jk <Esc>
@@ -76,3 +77,19 @@ if !empty(glob("~/.vim/autoload/plug.vim"))
   
   let g:airline_powerline_fonts = 1
 endif
+
+function! GotoJump()
+  jumps
+  let j = input("Please select your jump: ")
+  if j != ''
+    let pattern = '\v\c^\+'
+    if j =~ pattern
+      let j = substitute(j, pattern, '', 'g')
+      execute "normal " . j . "\<c-i>"
+    else
+      execute "normal " . j . "\<c-o>"
+    endif
+  endif
+endfunction
+
+nmap <Leader>j :call GotoJump()<CR>
