@@ -10,10 +10,38 @@ nnoremap ,h = ByEi[Ea]()hp
 
 " BASIC SETUP:
 map <SPACE> <leader>
+let maplocalleader = ","
+nnoremap <leader>ve :vsplit $MYVIMRC<cr>
+nnoremap <leader>vs :w<cr> <bar> :source $MYVIMRC<cr> <bar> :q<cr>
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
 
 " Map escape
-:imap jk <Esc>
-:imap kj <Esc>
+:inoremap jk <Esc>
+:inoremap kj <Esc>
+:inoremap <esc> <nop>
+
+" Auto commands
+augroup filetype_javascript
+  :autocmd!
+  :autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
+  :autocmd FileType javascript nnoremap <buffer> <localleader>dw :%s/\\$//g<esc>
+  :autocmd FileType javascript :iabbrev <buffer> iff if ()<left>
+  :autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 
+
+augroup END
+
+augroup filetype_python
+  :autocmd!
+  :autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
+  :autocmd FileType python :iabbrev <buffer> iff if:<left>
+  :autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
+augroup END
+
+augroup filetype_html
+  :autocmd!
+  :autocmd FileType html nnoremap <buffer> <localleader>c I<!--<esc>g_a--><esc>
+  :autocmd FileType html setlocal shiftwidth=2 tabstop=2
+augroup END
 
 
 " enter the curent millenium
@@ -30,6 +58,11 @@ set  path+=**
 " Display all matching files when we tab complete
 
 set wildmenu
+
+" Make gf files that start with / relative to project working directory
+" https://stackoverflow.com/questions/42625117/make-vim-to-consider-current-folder-the-root 
+nnoremap <silent> gf :let @/ = substitute(expand('<cfile>'), '^/', '', '')
+                   \  <bar>normal gngf<cr>
 
 " NOW WE CAN:
 " - Hit tab to :find  by  partial match
@@ -56,9 +89,6 @@ if has("autocmd")
   " ...
 endif
 
-autocmd FileType html setlocal shiftwidth=2 tabstop=2
-autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
-autocmd FileType JavaScript setlocal shiftwidth=2 tabstop=2 
 
 if !empty(glob("~/.vim/autoload/plug.vim"))
   " Specify a directory for plugins
