@@ -8,17 +8,32 @@ let @h = 'ByEi[Ea]()hp'
 
 nnoremap ,h = ByEi[Ea]()hp
 
+
 " BASIC SETUP:
 map <SPACE> <leader>
 let maplocalleader = ","
 nnoremap <leader>ve :vsplit $MYVIMRC<cr>
 nnoremap <leader>vs :w<cr> <bar> :source $MYVIMRC<cr> <bar> :q<cr>
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+" For local replace
+nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
+" For global replace
+nnoremap gR gD:%s/<C-R>///gc<left><left><left>
+
+" Map Insert mode completion (:h ins-completion)
+"inoremap <C-l> <C-x><C-l> 
+"inoremap <C-n> <C-x><C-n> 
+"inoremap <C-i> <C-x><C-i> 
+"inoremap <C-]> <C-x><C-]> 
+"inoremap <C-f> <C-x><C-f> 
+"inoremap <C-o> <C-x><C-o> 
+
 
 " Map escape
 :inoremap jk <Esc>
 :inoremap kj <Esc>
-:inoremap <esc> <nop>
+":inoremap <esc> <nop> DON'T USE! During insert mode; Caused arrow keys to enter OA, OB, OC, OD. Also changed
+"backspace entering weird characters
 
 " Auto commands
 augroup filetype_javascript
@@ -27,7 +42,6 @@ augroup filetype_javascript
   :autocmd FileType javascript nnoremap <buffer> <localleader>dw :%s/\\$//g<esc>
   :autocmd FileType javascript :iabbrev <buffer> iff if ()<left>
   :autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 
-
 augroup END
 
 augroup filetype_python
@@ -43,7 +57,15 @@ augroup filetype_html
   :autocmd FileType html setlocal shiftwidth=2 tabstop=2
 augroup END
 
-
+augroup filetype_c
+  :autocmd!
+  :autocmd FileType c nnoremap <buffer> <localleader>c I//<esc>
+  :autocmd FileType c nnoremap <buffer> <localleader>C ^xx<esc>
+  :autocmd FileType c map <F9> :w<cr>:!clear && gcc -Wall % -o %< <cr>
+  :autocmd FileType c map <F10> :w<cr>:!clear && gcc -Wall % -o %< && ./%< <cr>
+  :autocmd FileType c nnoremap <localleader>p :!./a.out<cr>
+augroup END
+  
 " enter the curent millenium
 set nocompatible
 
