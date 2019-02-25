@@ -5,3 +5,7 @@
 !.gitignore
 !vimrc
 
+# Whitelist folder
+!plugged
+!autoload
+
