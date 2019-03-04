@@ -63,7 +63,12 @@ augroup filetype_c
   :autocmd FileType c nnoremap <buffer> <localleader>C ^xx<esc>
   :autocmd FileType c map <F9> :w<cr>:!clear && gcc -Wall % -o %< <cr>
   :autocmd FileType c map <F10> :w<cr>:!clear && gcc -Wall % -o %< && ./%< <cr>
+  :autocmd FileType c nnoremap <localleader>r :w<cr>:!clear && gcc -Wall % -o %< && ./%< <cr>
+  :autocmd FileType c nnoremap <localleader>t :w<cr>:!clear && gcc -Wall % -o %< && %< <cr>
   :autocmd FileType c nnoremap <localleader>p :!./a.out<cr>
+  :autocmd FileType c inoremap { {<cr>}<esc>ko
+  :autocmd FileType c setlocal expandtab shiftwidth=4 softtabstop=4
+
 augroup END
   
 " enter the curent millenium
