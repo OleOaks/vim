@@ -68,7 +68,7 @@ augroup filetype_c
   :autocmd FileType c nnoremap <localleader>p :!./a.out<cr>
   :autocmd FileType c inoremap { {<cr>}<esc>ko
   :autocmd FileType c nnoremap <buffer> <localleader>i gg=G<C-o><C-o>
-  :autocmd FileType c setlocal expandtab shiftwidth=4 softtabstop=4
+  :autocmd FileType c setlocal noexpandtab tabstop=8 shiftwidth=8 softtabstop=8
 
 augroup END
   
